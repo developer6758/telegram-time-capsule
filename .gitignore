@@ -1,0 +1,5 @@
+.env
+.local/
+bin/
+*.pem
+!testdata/*.pem

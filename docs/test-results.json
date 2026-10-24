@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "date_utc": "2026-10-24",
+  "host": "Linux x86_64",
+  "go_version": "go1.27.3",
+  "database": "isolated PostgreSQL17 loopback container",
+  "command": "go test -race -count=1 -json ./...",
+  "top_level_passed": 23,
+  "passed_events_including_subtests": 57,
+  "failed": 0,
+  "skipped": [
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/server",
+      "test": "TestPostgresExternalRestart"
+    }
+  ],
+  "passed_tests": [
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/cmd/capsulectl",
+      "test": "TestGeneratedIOSConfigurationAndNoKeyOverwrite",
+      "elapsed_seconds": 0.02
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/auth",
+      "test": "TestTelegramIDIsNotSubjectOrFloat",
+      "elapsed_seconds": 0
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/auth",
+      "test": "TestStrictLoginJSON",
+      "elapsed_seconds": 0
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/auth",
+      "test": "TestOpaqueTokenCanonical",
+      "elapsed_seconds": 0
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/auth",
+      "test": "TestOIDCVerificationRejectsTampering",
+      "elapsed_seconds": 0.26
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/auth",
+      "test": "TestPostgresLoginProofStateReplayAndRefreshFamily",
+      "elapsed_seconds": 0.22
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/auth",
+      "test": "TestPostgresLogoutIsDeviceScopedAndExpiryEnforced",
+      "elapsed_seconds": 0.09
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/auth",
+      "test": "TestPostgresConcurrentRefreshReplayRevokesFamily",
+      "elapsed_seconds": 0.09
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/auth",
+      "test": "TestPostgresExpiredAndIncorrectCompletionStayUnauthorized",
+      "elapsed_seconds": 0.08
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/cmd/capsuled",
+      "test": "TestExecutableTLSStartup",
+      "elapsed_seconds": 0.92
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/protocol",
+      "test": "TestStrictJSONBoundaries",
+      "elapsed_seconds": 0
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/protocol",
+      "test": "TestExactIdentifiersAndBase64",
+      "elapsed_seconds": 0
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/protocol",
+      "test": "TestWrappingIdentityAndTamper",
+      "elapsed_seconds": 0
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/protocol",
+      "test": "TestDescriptorSignatureBindsExactBytes",
+      "elapsed_seconds": 0
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/protocol",
+      "test": "TestInteropFixture",
+      "elapsed_seconds": 0
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/protocol",
+      "test": "TestLayoutRejectsInvalidGeometry",
+      "elapsed_seconds": 0
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/protocol",
+      "test": "FuzzStrictJSON",
+      "elapsed_seconds": 0
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/server",
+      "test": "TestPostgresDelayedReleaseRestartAndRevoke",
+      "elapsed_seconds": 1.1
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/e2e",
+      "test": "TestHTTPSVerifiedSessionsEnforceCapsuleDeadline",
+      "elapsed_seconds": 2.23
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/server",
+      "test": "TestPostgresIdempotencyAndParticipantHide",
+      "elapsed_seconds": 1.09
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/server",
+      "test": "TestPostgresReleaseRevokeLinearization",
+      "elapsed_seconds": 1.16
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/server",
+      "test": "TestClockFailClosed",
+      "elapsed_seconds": 0
+    },
+    {
+      "package": "github.com/developer6758/telegram-time-capsule/internal/server",
+      "test": "TestHTTPRejectsMalformedAndUnexpectedFields",
+      "elapsed_seconds": 0.06
+    }
+  ],
+  "external_database_restart": {
+    "prepare": "passed",
+    "actual_container_restart": "performed",
+    "verify": "passed"
+  },
+  "go_vet": "passed",
+  "capsuled_static_build": "passed",
+  "capsulectl_static_build": "passed",
+  "real_telegram_login": "not_executed",
+  "native_ios_build": "not_executed"
+}
