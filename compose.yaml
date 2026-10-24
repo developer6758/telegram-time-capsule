@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:17-alpine@sha256:eee6c6e1b0894fa4fe0075eb054af9fd1cf39a35321c2d4110626cfe506411fb
+    environment:
+      POSTGRES_DB: capsule
+      POSTGRES_USER: capsule
+      POSTGRES_PASSWORD: ${CAPSULE_DB_PASSWORD:?Set a local PostgreSQL password in .env}
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - capsule-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U capsule -d capsule"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+    restart: unless-stopped
+  capsule:
+    profiles: [service]
+    build: .
+    user: "${CAPSULE_CONTAINER_UID:-1000}:${CAPSULE_CONTAINER_GID:-1000}"
+    env_file: .env
+    environment:
+      CAPSULE_LISTEN: 0.0.0.0:8443
+      CAPSULE_DATABASE_URL: postgres://capsule:${CAPSULE_DB_PASSWORD}@postgres:5432/capsule?sslmode=disable
+      CAPSULE_SIGNING_KEY_FILE: /run/capsule/signing.pem
+      CAPSULE_WRAPPING_KEYS_FILE: /run/capsule/wrapping.json
+      CAPSULE_TLS_CERT_FILE: /run/capsule/tls.crt
+      CAPSULE_TLS_KEY_FILE: /run/capsule/tls.key
+    ports:
+      - "127.0.0.1:8443:8443"
+    volumes:
+      - ./.local:/run/capsule:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+volumes:
+  capsule-postgres:
